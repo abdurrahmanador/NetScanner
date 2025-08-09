@@ -1,2 +1,4 @@
 Port,Service,Status,Vulnerability Info
+53,domain,OPEN,"DNS - Cache poisoning (CVE-2020-25705), amplification attacks"
 22,ssh,OPEN,"SSH - Weak passwords, brute-force, outdated encryption"
+80,http,OPEN,"HTTP - Unencrypted, XSS, SQL Injection, MITM, HTTP Smuggling"

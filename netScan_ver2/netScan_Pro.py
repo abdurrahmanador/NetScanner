@@ -52,12 +52,12 @@ def scan_port(port):
         result = s.connect_ex((target, port))
         if result == 0:
             try:
-                service = socket.getservbyname(port)
+                service = socket.getservbyport(port)
             except:
                 service = "UNKNOWN"
-            vuln_info = vuln_db(port, "No known vulnerabilities in basic scan")
+            vuln_info = vuln_db.get(port, "No known vulnerabilities in basic scan")
             print(Fore.GREEN + f"[+] Port {port} ({service}) is OPEN - {vuln_info}" + Style.RESET_ALL)
-            results.append((port, service, vuln_info))
+            results.append((port, service,"OPEN", vuln_info))
         s.close()
     except:
         pass
@@ -73,7 +73,7 @@ for t in threads:
     t.join()
 
 #save to CSV
-with open('scan_results.csv',mode='w',newline="") as f:
+with open('scan_results.csv', mode='w', newline="") as f:
     writer=csv.writer(f)
     writer.writerow(["Port", "Service", "Status", "Vulnerability Info"])
     writer.writerows(results)

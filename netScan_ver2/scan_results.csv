@@ -1,0 +1,2 @@
+Port,Service,Status,Vulnerability Info
+22,ssh,OPEN,"SSH - Weak passwords, brute-force, outdated encryption"
